@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: docx-to-text-webhook
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn docConverter:app
+    envVars:
+      - key: WEBHOOK_TOKEN
+        sync: false
